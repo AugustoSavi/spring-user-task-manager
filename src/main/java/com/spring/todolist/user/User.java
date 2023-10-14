@@ -2,6 +2,7 @@ package com.spring.todolist.user;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -10,6 +11,7 @@ import java.util.UUID;
 
 @Data
 @Entity(name="usuarios")
+@NoArgsConstructor
 public class User {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -25,4 +27,11 @@ public class User {
     private LocalDateTime updatedAt;
     @Version
     private Long version;
+
+
+    public User(String username, String name, String password) {
+        this.username = username;
+        this.name = name;
+        this.password = password;
+    }
 }
