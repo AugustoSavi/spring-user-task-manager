@@ -52,7 +52,7 @@ A documentação do Swagger oferece informações detalhadas sobre os endpoints 
 
 ## Contribuindo
 
-Sinta-se à vontade para contribuir para este projeto. Se você encontrar problemas ou tiver sugestões de melhorias, por favor, abra uma [issue](https://github.com/seu-repositorio/issues) ou envie um [pull request](https://github.com/seu-repositorio/pulls).
+Sinta-se à vontade para contribuir para este projeto. Se você encontrar problemas ou tiver sugestões de melhorias, por favor, abra uma [issue](https://github.com/AugustoSavi/spring-user-task-manager/issues) ou envie um [pull request](https://github.com/AugustoSavi/spring-user-task-manager/pulls).
 
 ## Licença
 
