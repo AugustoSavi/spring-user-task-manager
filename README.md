@@ -13,13 +13,13 @@ Antes de começar a usar a aplicação, siga estas etapas para inicializar o ser
 2. Clone o repositório deste projeto:
 
    ```
-   git clone https://seu-repositorio.git
+   git clone git@github.com:AugustoSavi/spring-user-task-manager.git
    ```
 
 3. Navegue até a pasta do projeto:
 
    ```
-   cd nome-do-seu-projeto
+   cd spring-user-task-manager
    ```
 
 4. Inicie o servidor Spring Boot com o seguinte comando:
@@ -35,10 +35,10 @@ Antes de começar a usar a aplicação, siga estas etapas para inicializar o ser
 A aplicação utiliza um banco de dados H2 em memória para armazenar os dados. Você pode acessar o console do H2 para visualizar e gerenciar o banco de dados. Use as seguintes informações de conexão:
 
 - URL do Console H2: [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
-- JDBC URL: `jdbc:h2:mem:testdb`
+- JDBC URL: `jdbc:h2:mem:todolist`
 - Driver Class: `org.h2.Driver`
-- Username: `sa`
-- Senha: deixe em branco
+- Username: `admin`
+- Senha: `admin`
 
 Certifique-se de que o servidor esteja em execução antes de tentar acessar o console H2.
 
