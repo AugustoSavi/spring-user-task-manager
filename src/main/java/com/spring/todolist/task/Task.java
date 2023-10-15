@@ -2,6 +2,7 @@ package com.spring.todolist.task;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
+@NoArgsConstructor
 @Entity(name = "tasks")
 public class Task {
     @Id
@@ -30,8 +32,16 @@ public class Task {
     private Long version;
 
 
+    public Task(String description, String title, LocalDateTime startAt, LocalDateTime endAt, String priority) {
+        this.description = description;
+        this.title = title;
+        this.startAt = startAt;
+        this.endAt = endAt;
+        this.priority = priority;
+    }
+
     public void setTitle(String title) throws Exception {
-        if (title.length() > 50){
+        if (title.length() > 50) {
             throw new Exception("O campo title deve conter no máximo 50 caracteres");
         }
 

@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.UUID;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -28,7 +30,7 @@ class UserControllerTest {
 
     @Test
     void createUser() throws Exception {
-        User user = new User("username", "name", "password");
+        User user = createUserAndNotSave();
 
         mockMvc.perform(
                         post("/users")
@@ -39,13 +41,13 @@ class UserControllerTest {
                 .andExpect(jsonPath("$.name").value(user.getName()))
                 .andExpect(jsonPath("$.username").value(user.getUsername()));
 
-
+        deleteAllUsers();
     }
 
     @Test
     void getUsers() throws Exception {
-        User user = new User("username1", "name", "password");
-        User user1 = new User("username2", "name", "password");
+        User user = createUserAndSave();
+        User user1 = createUserAndSave();
 
         iUserRepository.save(user);
         iUserRepository.save(user1);
@@ -53,8 +55,22 @@ class UserControllerTest {
         mockMvc.perform(
                         get("/users")
                 ).andExpect(status().isOk())
-                .andExpect(jsonPath("$.length()").value(3));
+                .andExpect(jsonPath("$.length()").value(2));
+
+        deleteAllUsers();
     }
 
 
+    User createUserAndSave() {
+        User user = new User(UUID.randomUUID().toString(), "name", "password");
+        return iUserRepository.save(user);
+    }
+
+    User createUserAndNotSave() {
+        return new User(UUID.randomUUID().toString(), "name", "password");
+    }
+
+    void deleteAllUsers() {
+        iUserRepository.deleteAll();
+    }
 }
